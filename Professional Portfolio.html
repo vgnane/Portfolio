@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0284c7;
+            --primary-light: #38bdf8;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --bg-base: #0f172a;
+            --border: #334155;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--bg-base) 0%, #1a2f4a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .title {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .header .contact {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            background: var(--dark-light);
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            margin-top: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-light);
+        }
+
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: var(--primary-light);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .job, .education {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .job:last-child, .education:last-child {
+            border-bottom: none;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .company {
+            color: var(--primary-light);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .dates {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(2, 132, 199, 0.2);
+            border: 1px solid var(--primary);
+            color: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(2, 132, 199, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .about-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        button {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--primary-light);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--dark-light);
+            color: var(--primary-light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GNANESWAR REDDY VINTA</h1>
+        <p class="title">ENTHUSIASTIC</p>
+        <div class="contact">
+            <span>📍 Currently in Helsinki, Finland. Indian origin(online/Offline/Hybrid)</span>
+            <span>📧 vgnane@gmail.com</span>
+            <span>📱 +358 465521817</span>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p class="about-content">
+                Ambitious technology professional currently pursuing a Master’s degree at the University of Helsinki while working at Tata Consultancy Services. Driven by a strong interest in technological innovation and lifelong learning. Actively exploring work–study opportunities to deepen technical skills and make a meaningful impact on challenging projects.
+            </p>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Professional Experience</h2>
+            
+            <div class="job">
+                <div class="job-title">Analyst/Systems Engineer/Devops Engineer/L3 Production Support</div>
+                <div class="company">TATA Consultancy Services</div>
+                <div class="dates">Aug 2022 - Present</div>
+                <div class="description">
+                    Gaining practical industry experience while pursuing advanced education::
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem; color: var(--text-secondary);">
+                        <li>Contributing to software development and technical projects</li>
+                        <li>Building professional experience in enterprise technology solutions</li>
+                        <li>Collaborating with diverse teams in a global organization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2>Education</h2>
+            
+            <div class="education">
+                <h3>Theoretical and Computational Methods</h3>
+                <div class="company">University of Helsinki</div>
+                <div class="dates">Current</div>
+                <div class="description">Pursuing advanced studies in technology and science:
+Deepening technical knowledge and research capabilities(Mix of Sciences like Physics, Computers, Data, Biology, Phsychology.... more to go)
+Engaging in innovative coursework and academic projects(Data Science, Human Computer Interaction...)
+Developing expertise in modern technology domains(Quantum)</div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">Full Stack Development</div>
+                <div class="skill-tag">Software Engineering</div>
+                <div class="skill-tag">Data Analysis</div>
+                <div class="skill-tag">Cloud Technologies</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">Java</div>
+                <div class="skill-tag">Problem Solving</div>
+                <div class="skill-tag">Team Collaboration</div>
+                <div class="skill-tag">Project Management</div>
+                <div class="skill-tag">Technical Communication</div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Get In Touch</h2>
+            <div class="button-group">
+                <button class="btn-primary">Download Resume</button>
+                <button class="btn-secondary">View on LinkedIn</button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Professional Portfolio. All rights reserved.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Last updated: January 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download resume button functionality
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                // Google Doc ID provided by the user
+                const docId = '1tV8mRyLM_TUJL5DUf8a8YtonV8Pen9I0JLCtNCoO6PA';
+                // Export the Google Doc as a PDF; this will open in a new tab (browser will handle download/preview)
+                const exportUrl = `https://docs.google.com/document/d/${docId}/export?format=pdf`;
+                window.open(exportUrl, '_blank', 'noopener');
+            });
+        });
+
+        // View LinkedIn button
+        document.querySelectorAll('.btn-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                window.open('https://www.linkedin.com/in/gnaneswar-reddy-vinta/', '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
